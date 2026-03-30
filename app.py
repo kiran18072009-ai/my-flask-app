@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 app.secret_key = "123"
 
-USERNAME = "admin"
+USERNAME = "kiran"
 PASSWORD = "1234"
 
 @app.route('/', methods=['GET', 'POST'])
