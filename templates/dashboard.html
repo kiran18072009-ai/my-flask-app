@@ -2,21 +2,24 @@
 <html>
     <head>
         <style>
-            h1 {
-                font-size: larger;
-                color: blue;
-                text-align: center;
-                font-style: italic;
-                
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 1;
+                background-color: #d3edf6;
+                font-family: Arial, sans-serif;
             }
+
+            
             
         </style>
     </head>
 <body>
 
-<h1>Welcome {{ user }} 🎉</h1>
+<h1>Hello {{name}} Welcome 🎉</h1>
 <a href="/logout">Logout</a>
 
 </body>
 </html>
-
