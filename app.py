@@ -13,7 +13,7 @@ def login():
         if password == VALID_PASSWORD:
             return redirect(url_for('dashboard', name=username))
         else:
-            return "Wrong password ❌"
+            return render_template('loginerror.html')
 
     return render_template('login.html')
 
@@ -27,6 +27,13 @@ def dashboard(name):
 def logout():
     # For now, we just redirect them back to the login page
     return redirect(url_for('login'))
+
+@app.route('/back')
+def back():
+    return redirect(url_for('login'))
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
