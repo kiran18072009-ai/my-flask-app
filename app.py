@@ -1,10 +1,8 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
-app.secret_key = "123"
 
-USERNAME = "kiran"
-PASSWORD = "1234"
+VALID_PASSWORD = "1234"   # <-- change to your password
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -12,26 +10,23 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        if username == USERNAME and password == PASSWORD:
-            session['user'] = username
-            return redirect('/dashboard')
-        
+        if password == VALID_PASSWORD:
+            return redirect(url_for('dashboard', name=username))
+        else:
+            return "Wrong password ❌"
 
-    return render_template("login.html")
+    return render_template('login.html')
 
 
-@app.route('/dashboard')
-def dashboard():
-    if 'user' in session:
-        return render_template("dashboard.html", user=session['user'])
-    return redirect('/')
+@app.route('/dashboard/<name>')
+def dashboard(name):
+    return render_template('dashboard.html', name=name)
 
 
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
-    return redirect('/')
-
+    # For now, we just redirect them back to the login page
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
