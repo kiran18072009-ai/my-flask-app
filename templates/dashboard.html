@@ -1,54 +1,71 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 1;
-                background-color: #75deeac4;
-                font-family: Arial, sans-serif;
-            }
-            h1 {
-                background-color: rgb(255, 255, 255);
-                padding: 100px;
-                border-radius: 100px; 
-                border-color: rgb(5, 209, 255);
-                border-style: dashed;
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #a2e9f2;
+        }
 
-               
-                display: flex;
-                box-shadow: 4px 50px 10px rgba(0, 0, 0, 0.1);
-                gap: 20px;
-                font-style: italic;
-                color: rgb(2, 68, 77);
+        /* Container to hold both text and button */
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
 
-            }
-            a {
-                background-color: rgb(55, 213, 241);
-                padding: 8px;
-                border: 3px;
-                
-                border-color: #f4f4f4;
-                box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.1);
-                gap: 0px;
-                border-radius: 10px;
+        .btn-calc , .dash {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
 
-            }
+        h1 {
+            background-color: rgb(255, 255, 255);
+            padding: 100px;
+            border-radius: 100px;
+            border-color: rgb(5, 209, 255);
+            border-style: dashed;
+            display: inline-block;
+            box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            color: rgb(2, 68, 77);
+            text-decoration: underline;
+            margin: 0; /* Removed margin to keep spacing tight */
+        }
 
-            
-            
-        </style>
-    </head>
+        a {
+            background-color: rgb(55, 213, 241);
+            padding: 8px;
+            border: 3px;
+            border-color: #f4f4f4;
+            box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.1);
+            gap: 0px;
+            border-radius: 10px;
+        }
+
+        .logout-link { position: absolute; right: 10px; top: 10px; }
+        .settings-link { position: absolute; left: 10px; top: 10px; }
+    </style>
+</head>
 <body>
+    <a href="/logout" class="logout-link">logout</a>
+    <a href="/settings" class="settings-link">Settings</a>
+    <a href="/dashboard2" class="dash">Study mode</a>
 
-<h1>Hello {{name}} , Welcome 🎉</h1>
-<a href="/logout">Logout</a>
-<a href="/settings">Settings</a>
-
+    <div class="welcome-container">
+        <h1>Hello {{ name }}, Welcome 🎉</h1>
+        
+        <a href="{{ url_for('calculator') }}" class="btn-calc">Open Calculator</a>
+    </div>
 </body>
 </html>
-
-
