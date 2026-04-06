@@ -26,7 +26,7 @@ def dashboard():
         with open("name.txt","r") as f:
             name=f.read()
     except:
-        name='User"
+        pass
 
     
 
