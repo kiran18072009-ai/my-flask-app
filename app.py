@@ -21,12 +21,16 @@ def login():
 
 
 @app.route('/dashboard')
-def dashboard(name):
+def dashboard():
+    try:
+        with open("name.txt","r") as f:
+            name=f.read()
+    except:
+        name='User"
 
-    name = session.get('name',name) 
     
 
-    return render_template('dashboard.html', name=name)
+    return render_template('dashboard.html',name=name)
 
 @app.route('/dashboard2', methods=['GET','POST'])
 def dashboard2():
