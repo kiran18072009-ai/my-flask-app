@@ -17,17 +17,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
         }
 
-        .btn-calc , .dash {
+        .btn-calc {
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
             display: inline-block;
+            transition: background 0.3s;
         }
+
+        
 
         h1 {
             background-color: rgb(255, 255, 255);
@@ -52,20 +57,39 @@
             gap: 0px;
             border-radius: 10px;
         }
+        .btn-calc:hover {
+            background-color: #0056b3;
+        }
+        .button-group {
+            display: flex;       /* Aligns items in a row */
+            gap: 20px;          /* Adds space between the buttons */
+            justify-content: center; 
+            margin-top: 20px;   /* Pulls them slightly away from the welcome box */
+        }
 
         .logout-link { position: absolute; right: 10px; top: 10px; }
         .settings-link { position: absolute; left: 10px; top: 10px; }
+        .tand-c {position: absolute;right: 10px; top: 700px;}
     </style>
 </head>
 <body>
     <a href="/logout" class="logout-link">logout</a>
     <a href="/settings" class="settings-link">Settings</a>
-    <a href="/dashboard2" class="dash">Study mode</a>
+    <a href="/t&c" class="tand-c">terms and conditions</a>
+
+
+
+    
+    
 
     <div class="welcome-container">
-        <h1>Hello {{ name }}, Welcome 🎉</h1>
-        
+    <h1>Hello {{ name }}, Welcome 🎉</h1>
+
+    <div class="button-group">
+        <a href="/dashboard2" class="btn-calc">Study Mode</a>
         <a href="{{ url_for('calculator') }}" class="btn-calc">Open Calculator</a>
     </div>
+    </div>
+   
 </body>
 </html>
