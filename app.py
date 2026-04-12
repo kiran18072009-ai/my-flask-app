@@ -106,12 +106,17 @@ def settings():
 def calculator():
     return render_template("calculator.html",)
 
-
+@app.route("/analysis")
+def analyse():
+    return render_template('analyse.html')
 
 @app.route("/t&c")
 def t_c():
     return render_template('t&c.html')
 
+@app.route("/terms")
+def terms():
+    return render_template("t&c1.html")
 
 
 if __name__ == '__main__':
