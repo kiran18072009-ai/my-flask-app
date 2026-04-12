@@ -22,15 +22,16 @@ def login():
 
 @app.route('/dashboard')
 def dashboard():
+
     try:
         with open("name.txt","r") as f:
             name=f.read()
     except:
-        pass
+        name='Uaer'
 
     
 
-    return render_template('dashboard.html',name=name)
+    return render_template('dashboard.html', name=name)
 
 @app.route('/dashboard2', methods=['GET','POST'])
 def dashboard2():
@@ -106,8 +107,12 @@ def calculator():
     return render_template("calculator.html",)
 
 
-import os
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+@app.route("/t&c")
+def t_c():
+    return render_template('t&c.html')
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
