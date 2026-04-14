@@ -193,7 +193,6 @@ def t_c():
 # 🔓 LOGOUT
 @app.route('/logout')
 def logout():
-    session.pop('username', None)
     return redirect('/')
 
 
