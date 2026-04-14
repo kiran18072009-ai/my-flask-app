@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account</title>
+    <style>
+        
+        body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #b6edf3;
+                font-family: Arial, sans-serif;
+            }
+        .card {
+            background-color: rgb(232, 242 ,242);
+            padding: 150px;
+            border-radius: 100px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 350px;
+        }
+        .tittle {text-align: center; font-style: italic;}
+        
+        form {display: flex; flex-direction: column; gap: 12px;}
+        input {padding: 8px;}
+        button {
+                padding: 8px;
+                border-radius: 6px;
+                border: none;
+                background-color: #216d69;
+                color: white;
+                cursor: pointer;
+            }
+        button:hover {background-color: #27a2d2;}
+        .button-text {text-align: center; font-size: 14px;}
+        .button-text a {text-decoration: none; color: blue;}
+        .button-text a:hover {text-decoration: underline;}
+    </style>
+</head>
+<body>
+    <div class="card">
+
+    <h2>Create Account</h2>
+
+
+    <form action="/create" method="POST">
+        <input type="text" name="username" placeholder="Enter Username" required><br><br>
+        <input type="password" name="password" placeholder="Enter Password" required><br><br>
+        
+        <button type="submit">Create Account</button>
+    </form>
+    <p class="botton-text">
+        Already have an account?
+        <a href="/">Login</a>
+    </p>
+
+    </div>
+    
+
+</body>
+</html>
