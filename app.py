@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'e0edae4f06c1be9a705b03e1faa2ac57998f30fc4337be34'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'e0edae4f06c1be9a705b03e1faa2ac57998f30fc4337be34')
 
 
 # 🔌 DB connection
