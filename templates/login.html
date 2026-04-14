@@ -23,7 +23,24 @@
 
                 
             }
-            
+            .create-text {
+                text-align: center;
+                font-size: 14px;
+                margin-top: 15px;
+                color: #333;
+
+            }
+            button {
+                padding: 8px;
+                border-radius: 6px;
+                border: none;
+                background-color: #4cafaa;
+                color: white;
+                cursor: pointer;
+            }
+            button:hover {background-color: #457aa0;}
+            .create-link {text-decoration: none; color: #007BFF; font-weight: 600;}
+            .create-link:hover {text-decoration: underline;}
             .t-and-c {position: absolute; right: 10px; bottom: 10px;}
         </style>
     </head>
@@ -38,7 +55,14 @@
         <p>Password:</p>
         <input type="password" name="password" placeholder="Enter password" required><br>
         <button type="submit">Login</button>
+        
     </form>
+    >
+
+<p class="create-text">
+    Don't have an account?
+    <a href="/create_account" class="create-link">Create one</a>
+</p>
 <a href="/terms" class="t-and-c">terms and conditions</a>
 </body>
 </html>
