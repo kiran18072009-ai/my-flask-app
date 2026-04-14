@@ -1,41 +1,13 @@
-
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
-import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'e0edae4f06c1be9a705b03e1faa2ac57998f30fc4337be34')
-
-# ✅ Database path (important for deployment)
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-db_path = os.path.join(BASE_DIR, "users.db")
-
-
-# ✅ Create table automatically
-def create_table():
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT UNIQUE,
-        password TEXT
-    )
-    """)
-
-    conn.commit()
-    conn.close()
-
-
-create_table()
-app = Flask(__name__)
-
+app.secret_key = "e0edae4f06c1be9a705b03e1faa2ac57998f30fc4337be34"
 
 
 # 🔌 DB connection
 def get_db():
-    return sqlite3.connect(db_path)
+    return sqlite3.connect('users.db')
 
 
 # 🏠 LOGIN
@@ -55,7 +27,7 @@ def login():
         conn.close()
 
         if user:
-            session['username_id'] = username.id
+            session['username'] = username
             return redirect('/dashboard')
         else:
             return render_template('loginerror.html')
@@ -67,10 +39,10 @@ def login():
 @app.route('/dashboard')
 def dashboard():
 
-    if 'username_id' not in session:
+    if 'username' not in session:
         return redirect('/')
 
-    return render_template('dashboard.html', name.id=session['username_id'])
+    return render_template('dashboard.html', name=session['username'])
 
 
 # 📊 DASHBOARD 2 (NEW)
@@ -78,10 +50,10 @@ def dashboard():
 @app.route('/dashboard2', methods=['GET', 'POST'])
 def dashboard2():
 
-    if 'username_id' not in session:
+    if 'username' not in session:
         return redirect('/')
 
-    username.id = session['username_id']
+    username = session['username']
 
     conn = get_db()
     cursor = conn.cursor()
@@ -123,7 +95,7 @@ def dashboard2():
 @app.route("/done/<int:id>")
 def done(id):
 
-    if 'username_id' not in session:
+    if 'username' not in session:
         return redirect('/')
 
     conn = get_db()
@@ -171,7 +143,7 @@ def create_account():
 @app.route('/settings')
 def settings():
 
-    if 'username_id' not in session:
+    if 'username' not in session:
         return redirect('/')
 
     return render_template('settings.html', name=session['username'])
@@ -193,6 +165,7 @@ def t_c():
 # 🔓 LOGOUT
 @app.route('/logout')
 def logout():
+   
     return redirect('/')
 
 
