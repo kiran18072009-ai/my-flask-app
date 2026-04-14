@@ -4,7 +4,7 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-app.secret_key = "2525"
+app.secret_key = "9901225533"
 
 # ✅ Database path (important for deployment)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
