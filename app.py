@@ -54,7 +54,7 @@ def login():
     return render_template('login.html')
 
 # 📝 SIGN UP / CREATE ACCOUNT
-@app.route('/create', methods=['GET', 'POST'])
+@app.route('/create_account', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
         username = request.form.get('username')
