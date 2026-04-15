@@ -5,8 +5,7 @@ import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'e0edae4f06c1be9a705b03e1faa2ac57998f30fc4337be34')
 
-app = Flask(__name__)
-app.secret_key = "your_secret_key_here"
+
 
 # ✅ Database path (important for deployment)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
